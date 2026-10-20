@@ -5,10 +5,17 @@ export interface User {
   name: string;
   email: string;
   role: UserProfile;
-  cadasturNum?: string;
-  communityId?: string;
   avatarUrl: string;
   phone: string;
+  cpf?: string;
+  cadasturNum?: string; // For Guia
+  cadasturStatus?: 'ATIVO' | 'EM_ANALISE' | 'PENDENTE';
+  specialties?: string[];
+  communityName?: string; // For Liderança
+  communityCnpj?: string;
+  pixKey?: string;
+  bio?: string;
+  createdAt: string;
 }
 
 export interface CommunityAssociation {
@@ -35,6 +42,7 @@ export interface Guide {
   totalExpeditions: number;
   avatarUrl: string;
   phone: string;
+  verifiedCadastur?: boolean;
 }
 
 export interface ExperienceItineraryItem {
@@ -42,6 +50,19 @@ export interface ExperienceItineraryItem {
   title: string;
   description: string;
   location: string;
+}
+
+export interface Review {
+  id: string;
+  experienceId: string;
+  touristName: string;
+  touristAvatar: string;
+  rating: number; // 1 to 5
+  communityHospitalityRating: number; // 1 to 5
+  guidePerformanceRating: number; // 1 to 5
+  environmentalRespectRating: number; // 1 to 5
+  comment: string;
+  date: string;
 }
 
 export interface Experience {
@@ -84,6 +105,8 @@ export interface Experience {
     guide: number;               // ex: 28%
     platform: number;            // ex: 12%
   };
+
+  reviews?: Review[];
 }
 
 export interface Booking {
@@ -146,4 +169,28 @@ export interface CuratorshipProposal {
   status: 'PENDENTE' | 'APROVADO' | 'REJEITADO';
   submissionDate: string;
   notes: string;
+}
+
+export interface RondoniaDestination {
+  id: string;
+  name: string;
+  municipality: string;
+  ecosystem: string;
+  baciaHidrografica: string;
+  description: string;
+  historyAndCulture: string;
+  distanceFromPortoVelhoKm: number;
+  howToGetThere: {
+    rodoviario: string;
+    fluvial?: string;
+    aereo?: string;
+  };
+  bestSeason: string;
+  seasonType: 'SECA_PRAIAS' | 'CHEIA_IGAPO' | 'ANO_TODO';
+  latitude: number;
+  longitude: number;
+  photos: string[];
+  highlights: string[];
+  conservationUnitOrIndigenousLand: string;
+  relatedExperienceIds: string[];
 }

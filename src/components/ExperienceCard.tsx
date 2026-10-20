@@ -10,7 +10,8 @@ import {
   Check, 
   Sparkles,
   TreePine,
-  AlertCircle
+  AlertCircle,
+  Star
 } from 'lucide-react';
 import { Experience } from '../types';
 
@@ -18,6 +19,7 @@ interface ExperienceCardProps {
   experience: Experience;
   onSelect: (exp: Experience) => void;
   onBook: (exp: Experience) => void;
+  onOpenReviews?: (exp: Experience) => void;
   isOffline: boolean;
 }
 
@@ -25,6 +27,7 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
   experience,
   onSelect,
   onBook,
+  onOpenReviews,
   isOffline
 }) => {
   const [downloadedOffline, setDownloadedOffline] = useState(false);
@@ -80,24 +83,41 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
             {experience.category}
           </span>
 
-          {/* Offline Guide Button */}
-          <button
-            onClick={handleDownloadOffline}
-            title={downloadedOffline ? "Guia e mapa salvos localmente" : "Baixar pacote do roteiro para uso offline"}
-            className={`p-1.5 rounded-full backdrop-blur-md transition-all shadow-sm ${
-              downloadedOffline
-                ? 'bg-emerald-600 text-white'
-                : 'bg-white/80 text-slate-800 hover:bg-white'
-            }`}
-          >
-            {isDownloading ? (
-              <span className="w-4 h-4 border-2 border-forest-800 border-t-transparent rounded-full animate-spin block"></span>
-            ) : downloadedOffline ? (
-              <Check className="w-4 h-4" />
-            ) : (
-              <Download className="w-4 h-4" />
+          <div className="flex items-center space-x-1.5">
+            {/* Reviews Trigger */}
+            {onOpenReviews && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onOpenReviews(experience);
+                }}
+                title="Ver avaliações da vivência"
+                className="px-2 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-bold text-amber-900 flex items-center space-x-1 hover:bg-white transition-all shadow-sm"
+              >
+                <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
+                <span>4.9</span>
+              </button>
             )}
-          </button>
+
+            {/* Offline Guide Button */}
+            <button
+              onClick={handleDownloadOffline}
+              title={downloadedOffline ? "Guia e mapa salvos localmente" : "Baixar pacote do roteiro para uso offline"}
+              className={`p-1.5 rounded-full backdrop-blur-md transition-all shadow-sm ${
+                downloadedOffline
+                  ? 'bg-emerald-600 text-white'
+                  : 'bg-white/80 text-slate-800 hover:bg-white'
+              }`}
+            >
+              {isDownloading ? (
+                <span className="w-4 h-4 border-2 border-forest-800 border-t-transparent rounded-full animate-spin block"></span>
+              ) : downloadedOffline ? (
+                <Check className="w-4 h-4" />
+              ) : (
+                <Download className="w-4 h-4" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Bottom Details on Image */}

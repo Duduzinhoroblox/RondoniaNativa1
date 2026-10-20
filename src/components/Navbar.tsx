@@ -3,7 +3,7 @@ import {
   Compass, 
   Wifi, 
   WifiOff, 
-  User, 
+  User as UserIcon, 
   MapPin, 
   BookOpen, 
   ShieldCheck, 
@@ -13,9 +13,12 @@ import {
   ChevronDown,
   Menu,
   X,
-  AlertTriangle
+  Plus,
+  LogIn,
+  LogOut,
+  Navigation
 } from 'lucide-react';
-import { UserProfile } from '../types';
+import { User, UserProfile } from '../types';
 
 interface NavbarProps {
   currentView: string;
@@ -25,6 +28,10 @@ interface NavbarProps {
   activeProfile: UserProfile;
   setActiveProfile: (role: UserProfile) => void;
   offlineQueueCount: number;
+  currentUser: User | null;
+  onOpenAuth: () => void;
+  onLogout: () => void;
+  onOpenCreateExperience: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -34,7 +41,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   setIsOffline,
   activeProfile,
   setActiveProfile,
-  offlineQueueCount
+  offlineQueueCount,
+  currentUser,
+  onOpenAuth,
+  onLogout,
+  onOpenCreateExperience
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
@@ -64,11 +75,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navItems = [
     { id: 'catalog', label: 'Roteiros & Vivências', icon: Compass },
+    { id: 'destinations', label: 'Achar Lugares (Guia RO)', icon: Navigation },
     { id: 'map', label: 'Mapa Georreferenciado', icon: MapPin },
     { id: 'scanner', label: 'Validador Offline', icon: QrCode },
-    { id: 'split', label: 'Fundo Comunitário & Split', icon: DollarSign },
-    { id: 'curatorship', label: 'Curadoria FUNAI/ICMBio', icon: ShieldCheck },
-    { id: 'centelha', label: 'Projeto Centelha 3', icon: Award }
+    { id: 'split', label: 'Fundo Comunitário', icon: DollarSign },
+    { id: 'curatorship', label: 'Curadoria Legal', icon: ShieldCheck },
+    { id: 'centelha', label: 'Centelha 3', icon: Award }
   ];
 
   return (
@@ -118,7 +130,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
+            <nav className="hidden xl:flex items-center space-x-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = currentView === item.id;
@@ -139,14 +151,23 @@ export const Navbar: React.FC<NavbarProps> = ({
               })}
             </nav>
 
-            {/* Right Controls: Connectivity Switch & Profile Switcher */}
-            <div className="flex items-center space-x-3">
+            {/* Right Controls */}
+            <div className="flex items-center space-x-2 sm:space-x-3">
               
+              {/* Button to Create Experience (RF02) */}
+              <button
+                onClick={onOpenCreateExperience}
+                className="hidden md:flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-forest-800 border border-emerald-300 hover:bg-emerald-100 transition-all shadow-xs"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Novo Roteiro</span>
+              </button>
+
               {/* Online / Offline Simulator Toggle */}
               <button
                 onClick={() => setIsOffline(!isOffline)}
                 title={isOffline ? "Alternar para Modo Online (4G/Wi-Fi)" : "Simular Perda de Sinal na Floresta (Modo Offline)"}
-                className={`flex items-center space-x-2 px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
+                className={`flex items-center space-x-1.5 px-2.5 py-1.5 rounded-full text-xs font-medium border transition-all ${
                   isOffline
                     ? 'bg-amber-100 text-amber-900 border-amber-300 hover:bg-amber-200'
                     : 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100'
@@ -155,26 +176,55 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {isOffline ? (
                   <>
                     <WifiOff className="w-3.5 h-3.5 text-amber-700" />
-                    <span className="hidden sm:inline">Offline (Off-grid)</span>
+                    <span className="hidden sm:inline">Off-grid</span>
                   </>
                 ) : (
                   <>
                     <Wifi className="w-3.5 h-3.5 text-emerald-600" />
-                    <span className="hidden sm:inline">Online (4G)</span>
+                    <span className="hidden sm:inline">Online</span>
                   </>
                 )}
               </button>
+
+              {/* Login / User Profile Button */}
+              {currentUser ? (
+                <div className="flex items-center space-x-2 bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1">
+                  <img
+                    src={currentUser.avatarUrl}
+                    alt=""
+                    className="w-6 h-6 rounded-full object-cover border border-forest-600"
+                  />
+                  <div className="text-left hidden lg:block">
+                    <span className="block text-xs font-bold text-slate-800 truncate max-w-[100px]">
+                      {currentUser.name.split(' ')[0]}
+                    </span>
+                  </div>
+                  <button
+                    onClick={onLogout}
+                    title="Sair da Conta"
+                    className="p-1 text-slate-400 hover:text-rose-600 transition-colors"
+                  >
+                    <LogOut className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={onOpenAuth}
+                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-forest-800 hover:bg-forest-900 text-white shadow-sm transition-all"
+                >
+                  <LogIn className="w-3.5 h-3.5" />
+                  <span>Entrar</span>
+                </button>
+              )}
 
               {/* Profile Selector Dropdown */}
               <div className="relative">
                 <button
                   onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                  className={`flex items-center space-x-2 px-3 py-1.5 rounded-lg border text-xs font-medium transition-all ${profileLabels[activeProfile].badgeColor}`}
+                  className={`flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-medium transition-all ${profileLabels[activeProfile].badgeColor}`}
                 >
-                  <User className="w-3.5 h-3.5" />
-                  <div className="text-left hidden sm:block">
-                    <span className="block font-bold">{profileLabels[activeProfile].title}</span>
-                  </div>
+                  <UserIcon className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline font-bold">{profileLabels[activeProfile].title.split(' ')[0]}</span>
                   <ChevronDown className="w-3 h-3 opacity-70" />
                 </button>
 
@@ -216,7 +266,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 rounded-lg text-slate-600 hover:text-forest-900 hover:bg-slate-100"
+                className="xl:hidden p-2 rounded-lg text-slate-600 hover:text-forest-900 hover:bg-slate-100"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -226,7 +276,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2 animate-fadeIn">
+          <div className="xl:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2 animate-fadeIn">
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider px-2">Menu de Navegação</p>
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -247,6 +297,19 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </button>
               );
             })}
+
+            <div className="pt-2 border-t border-slate-100">
+              <button
+                onClick={() => {
+                  onOpenCreateExperience();
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Cadastrar Novo Roteiro</span>
+              </button>
+            </div>
           </div>
         )}
       </header>

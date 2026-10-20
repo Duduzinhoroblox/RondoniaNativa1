@@ -7,16 +7,21 @@ import { BookingModal } from './components/BookingModal';
 import { VoucherModal } from './components/VoucherModal';
 import { OfflineGuideScanner } from './components/OfflineGuideScanner';
 import { InteractiveMap } from './components/InteractiveMap';
+import { DestinationsExplorer } from './components/DestinationsExplorer';
 import { CommunityFundDashboard } from './components/CommunityFundDashboard';
 import { LegalCuratorshipModal } from './components/LegalCuratorshipModal';
 import { EthicalGuidelinesModal } from './components/EthicalGuidelinesModal';
 import { CentelhaProjectPitch } from './components/CentelhaProjectPitch';
+import { AuthModal } from './components/AuthModal';
+import { CreateExperienceModal } from './components/CreateExperienceModal';
+import { ReviewsModal } from './components/ReviewsModal';
 import { Footer } from './components/Footer';
 
 import { 
   mockExperiences, 
   mockBookings, 
   mockAssociations, 
+  mockGuides,
   mockCuratorshipProposals 
 } from './data/mockData';
 import { 
@@ -24,7 +29,9 @@ import {
   Booking, 
   UserProfile, 
   OfflineValidationLog, 
-  CuratorshipProposal 
+  CuratorshipProposal,
+  User,
+  Review
 } from './types';
 
 import { 
@@ -37,7 +44,8 @@ import {
   AlertCircle,
   Ticket,
   ChevronRight,
-  WifiOff
+  WifiOff,
+  Plus
 } from 'lucide-react';
 
 export function App() {
@@ -45,6 +53,12 @@ export function App() {
   const [currentView, setCurrentView] = useState('catalog');
   const [activeProfile, setActiveProfile] = useState<UserProfile>('TURISTA');
   const [isOffline, setIsOffline] = useState(false);
+
+  // Authentication State
+  const [currentUser, setCurrentUser] = useState<User | null>(() => {
+    const saved = localStorage.getItem('rondonia_current_user');
+    return saved ? JSON.parse(saved) : null;
+  });
 
   // Core Data State (persisted in session)
   const [experiences, setExperiences] = useState<Experience[]>(() => {
@@ -89,6 +103,9 @@ export function App() {
   const [bookingExperience, setBookingExperience] = useState<Experience | null>(null);
   const [activeVoucherModal, setActiveVoucherModal] = useState<Booking | null>(null);
   const [isEthicsModalOpen, setIsEthicsModalOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isCreateExperienceOpen, setIsCreateExperienceOpen] = useState(false);
+  const [reviewExperience, setReviewExperience] = useState<Experience | null>(null);
 
   // Sync state to LocalStorage
   useEffect(() => {
@@ -107,9 +124,34 @@ export function App() {
     localStorage.setItem('rondonia_proposals', JSON.stringify(curatorshipProposals));
   }, [curatorshipProposals]);
 
-  // Handlers
+  useEffect(() => {
+    if (currentUser) {
+      localStorage.setItem('rondonia_current_user', JSON.stringify(currentUser));
+    } else {
+      localStorage.removeItem('rondonia_current_user');
+    }
+  }, [currentUser]);
+
+  // Auth Handlers
+  const handleLoginSuccess = (user: User) => {
+    setCurrentUser(user);
+    setActiveProfile(user.role);
+    setIsAuthModalOpen(false);
+
+    if (user.role === 'GUIA') setCurrentView('scanner');
+    if (user.role === 'LIDERANCA') setCurrentView('split');
+    if (user.role === 'ADMIN') setCurrentView('curatorship');
+    if (user.role === 'TURISTA') setCurrentView('catalog');
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setActiveProfile('TURISTA');
+    setCurrentView('catalog');
+  };
+
+  // Experience Handlers
   const handleBookingSuccess = (newBooking: Booking) => {
-    // Increment booked count for the experience
     setExperiences(prev => prev.map(exp => {
       if (exp.id === newBooking.experienceId) {
         return {
@@ -122,6 +164,25 @@ export function App() {
 
     setBookings(prev => [newBooking, ...prev]);
     setActiveVoucherModal(newBooking);
+  };
+
+  const handleCreateExperience = (newExp: Experience) => {
+    setExperiences(prev => [newExp, ...prev]);
+    setIsCreateExperienceOpen(false);
+    setCurrentView('catalog');
+  };
+
+  const handleAddReview = (expId: string, review: Review) => {
+    setExperiences(prev => prev.map(exp => {
+      if (exp.id === expId) {
+        const currentReviews = exp.reviews || [];
+        return {
+          ...exp,
+          reviews: [review, ...currentReviews]
+        };
+      }
+      return exp;
+    }));
   };
 
   const handleValidateBooking = (bookingId: string, gpsLat: number, gpsLng: number) => {
@@ -211,6 +272,10 @@ export function App() {
         activeProfile={activeProfile}
         setActiveProfile={setActiveProfile}
         offlineQueueCount={pendingSyncCount}
+        currentUser={currentUser}
+        onOpenAuth={() => setIsAuthModalOpen(true)}
+        onLogout={handleLogout}
+        onOpenCreateExperience={() => setIsCreateExperienceOpen(true)}
       />
 
       {/* Main Views */}
@@ -297,8 +362,20 @@ export function App() {
                   </p>
                 </div>
 
-                <div className="flex items-center space-x-2 text-xs font-semibold text-slate-500">
-                  <span>Ordenação: <strong>Mais Relevantes</strong></span>
+                <div className="flex items-center space-x-3">
+                  <button
+                    onClick={() => setCurrentView('destinations')}
+                    className="text-xs font-bold text-forest-800 hover:text-forest-900 underline underline-offset-4"
+                  >
+                    Ver por Destino / Cidade
+                  </button>
+                  <button
+                    onClick={() => setIsCreateExperienceOpen(true)}
+                    className="px-3.5 py-2 bg-forest-800 hover:bg-forest-900 text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center space-x-1.5"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    <span>Cadastrar Roteiro</span>
+                  </button>
                 </div>
               </div>
 
@@ -330,6 +407,7 @@ export function App() {
                       experience={exp}
                       onSelect={(e) => setDetailExperience(e)}
                       onBook={(e) => setBookingExperience(e)}
+                      onOpenReviews={(e) => setReviewExperience(e)}
                       isOffline={isOffline}
                     />
                   ))}
@@ -341,7 +419,16 @@ export function App() {
           </div>
         )}
 
-        {/* VIEW 2: MAP */}
+        {/* VIEW 2: DESTINATIONS EXPLORER ("Achar Lugares") */}
+        {currentView === 'destinations' && (
+          <DestinationsExplorer
+            experiences={experiences}
+            onSelectExperience={(exp) => setDetailExperience(exp)}
+            onOpenMap={() => setCurrentView('map')}
+          />
+        )}
+
+        {/* VIEW 3: MAP */}
         {currentView === 'map' && (
           <InteractiveMap
             experiences={experiences}
@@ -350,7 +437,7 @@ export function App() {
           />
         )}
 
-        {/* VIEW 3: OFFLINE SCANNER */}
+        {/* VIEW 4: OFFLINE SCANNER */}
         {currentView === 'scanner' && (
           <OfflineGuideScanner
             bookings={bookings}
@@ -362,7 +449,7 @@ export function App() {
           />
         )}
 
-        {/* VIEW 4: COMMUNITY FUND & SPLIT */}
+        {/* VIEW 5: COMMUNITY FUND & SPLIT */}
         {currentView === 'split' && (
           <CommunityFundDashboard
             associations={mockAssociations}
@@ -371,7 +458,7 @@ export function App() {
           />
         )}
 
-        {/* VIEW 5: CURATORSHIP & ADMIN */}
+        {/* VIEW 6: CURATORSHIP & ADMIN */}
         {currentView === 'curatorship' && (
           <LegalCuratorshipModal
             proposals={curatorshipProposals}
@@ -380,7 +467,7 @@ export function App() {
           />
         )}
 
-        {/* VIEW 6: CENTELHA PITCH & DOSSIER */}
+        {/* VIEW 7: CENTELHA PITCH & DOSSIER */}
         {currentView === 'centelha' && (
           <CentelhaProjectPitch />
         )}
@@ -431,6 +518,35 @@ export function App() {
       {isEthicsModalOpen && (
         <EthicalGuidelinesModal
           onClose={() => setIsEthicsModalOpen(false)}
+        />
+      )}
+
+      {/* Authentication & User Register Modal */}
+      {isAuthModalOpen && (
+        <AuthModal
+          onClose={() => setIsAuthModalOpen(false)}
+          onLoginSuccess={handleLoginSuccess}
+        />
+      )}
+
+      {/* Create Experience Modal (RF02) */}
+      {isCreateExperienceOpen && (
+        <CreateExperienceModal
+          onClose={() => setIsCreateExperienceOpen(false)}
+          onSubmitExperience={handleCreateExperience}
+          associations={mockAssociations}
+          guides={mockGuides}
+          currentUser={currentUser}
+        />
+      )}
+
+      {/* Reviews & Sustainable Feedback Modal (RF10) */}
+      {reviewExperience && (
+        <ReviewsModal
+          experience={reviewExperience}
+          onClose={() => setReviewExperience(null)}
+          onAddReview={handleAddReview}
+          currentUser={currentUser}
         />
       )}
 
