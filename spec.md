@@ -7,7 +7,8 @@
 > **Instituição:** Instituto Federal de Rondônia (IFRO)  
 > **Setor Econômico:** Turismo Sustentável, Meio Ambiente e Tecnologia da Informação  
 > **Repositório GitHub:** [https://github.com/Duduzinhoroblox/RondoniaNativa1](https://github.com/Duduzinhoroblox/RondoniaNativa1)  
-> **Versão da Spec:** 1.3.0 (Final para Avaliação Docente)  
+> **Sistema Publicado no Ar (GitHub Pages):** [https://duduzinhoroblox.github.io/RondoniaNativa1/](https://duduzinhoroblox.github.io/RondoniaNativa1/)  
+> **Versão da Spec:** 1.4.0 (Final para Avaliação Docente)  
 
 ---
 
@@ -211,4 +212,4 @@ Ao clicar no botão **"Entrar"** no cabeçalho do site, há 4 atalhos com 1 cliq
 * [x] **Credenciais Protegidas:** Nenhuma senha real ou chave de API no código-fonte; `.env` excluído no `.gitignore` e `.env.example` preenchido apenas com dados fictícios.
 * [x] **Script SQL Autossuficiente:** Arquivo `database/schema.sql` com criação de tabelas, tipos, restrições e seed data.
 * [x] **Changelog Documentado:** Arquivo `CHANGELOG.md` detalhando as correções e a revisão humana crítica do que a IA propôs.
-* [x] **Compatibilidade Vercel:** Configuração `vercel.json` preparada para deploy estático gratuito e contínuo.
+* [x] **Publicação no Ar (GitHub Pages & Netlify):** Deploy automatizado com GitHub Pages em `https://duduzinhoroblox.github.io/RondoniaNativa1/`, configuração `netlify.toml` para Netlify e `vercel.json` para Vercel.

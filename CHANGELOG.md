@@ -21,6 +21,11 @@ Este documento registra a evolução cronológica do sistema, as decisões arqui
   * **Avaliações Sustentáveis (`ReviewsModal.tsx`):** Exigência de nome do avaliador e justificativa/comentário substancial com no mínimo 10 caracteres.
   * **Validador de Campo (`OfflineGuideScanner.tsx`):** Tratamento amigável para cliques sem código ou buscas por vouchers inexistentes, evitando silêncio ou erros não tratados.
   * **Ciclo de Vida do Mapa Leaflet (`InteractiveMap.tsx`):** Adicionado tratamento de unmount para descartar o mapa da memória e evitar o erro clássico de re-inicialização ao alternar entre abas.
+* **Publicação Multi-Plataforma (GitHub Pages & Netlify):**
+  * Configurado `base: './'` no `vite.config.ts` para permitir hospedagem em subdiretórios sem caminhos absolutos quebrados.
+  * Ativado o **GitHub Pages** oficial via GitHub Actions (`.github/workflows/deploy.yml`) gerando a URL permanente: `https://duduzinhoroblox.github.io/RondoniaNativa1/`.
+  * Adicionado `netlify.toml` para suporte a deploy contínuo e drag-and-drop no Netlify.
+  * Atualizado `vercel.json` com `buildCommand` e `outputDirectory` explícitos.
 
 ---
 
