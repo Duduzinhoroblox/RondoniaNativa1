@@ -63,7 +63,18 @@ export function App() {
   // Core Data State (persisted in session)
   const [experiences, setExperiences] = useState<Experience[]>(() => {
     const saved = localStorage.getItem('rondonia_experiences');
-    return saved ? JSON.parse(saved) : mockExperiences;
+    if (saved) {
+      try {
+        const parsed: Experience[] = JSON.parse(saved);
+        if (parsed.length > 0 && parsed[0].images[0].includes('photo-1518709268805')) {
+          return mockExperiences;
+        }
+        return parsed;
+      } catch (e) {
+        return mockExperiences;
+      }
+    }
+    return mockExperiences;
   });
 
   const [bookings, setBookings] = useState<Booking[]>(() => {

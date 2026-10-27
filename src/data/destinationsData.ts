@@ -19,12 +19,12 @@ export const mockDestinations: RondoniaDestination[] = [
     latitude: -12.4282,
     longitude: -64.4239,
     photos: [
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1584646098378-0874589d76b1?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&auto=format&fit=crop&q=80'
     ],
     highlights: [
-      'Muralhas de cantaria originais de 1776 e galerias subterrâneas preservadas',
+      'Muralhas de cantaria originais de 1776 e canhões coloniais preservados na selva',
       'Observação de botos-cor-de-rosa e ariranhas gigantes na bacia do Guaporé',
       'História colonial viva e proximidade com a fronteira boliviana (Baures / Versalles)',
       'Hospitalidade e saberes dos quilombolas do Forte'
@@ -50,14 +50,15 @@ export const mockDestinations: RondoniaDestination[] = [
     latitude: -12.8542,
     longitude: -63.1256,
     photos: [
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&auto=format&fit=crop&q=80'
     ],
     highlights: [
       'Berçário comunitário de proteção de tartarugas e soltura monitorada',
       'Música de viola de buriti e contação de lendas amazônicas',
       'Culinária ancestral quilombola com galinha caipira e pirão de tucunaré',
-      'Birdwatching: presença de jaburus, cegonhas e gaviões-de-penacho'
+      'Birdwatching: presença de araras, jaburus, cegonhas e gaviões-de-penacho'
     ],
     conservationUnitOrIndigenousLand: 'Território Quilombola Reconhecido pela Fundação Cultural Palmares',
     relatedExperienceIds: ['exp-pedras-negras']
@@ -80,8 +81,9 @@ export const mockDestinations: RondoniaDestination[] = [
     latitude: -11.2386,
     longitude: -61.4429,
     photos: [
-      'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1200&auto=format&fit=crop&q=80'
     ],
     highlights: [
       'Trilha etnobotânica conduzida por xamãs e biólogos indígenas',
@@ -110,8 +112,9 @@ export const mockDestinations: RondoniaDestination[] = [
     latitude: -11.9567,
     longitude: -63.7431,
     photos: [
-      'https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=1200&auto=format&fit=crop&q=80'
     ],
     highlights: [
       'Vivência prática da sangria e defumação do látex seringueiro',
@@ -140,11 +143,12 @@ export const mockDestinations: RondoniaDestination[] = [
     latitude: -8.7619,
     longitude: -63.9039,
     photos: [
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80'
     ],
     highlights: [
-      'Passeio interpretativo pelos galpões e locomotivas históricas centenárias',
+      'Passeio interpretativo pelas locomotivas a vapor centenárias da EFMM',
       'Passeio em barco de passageiros pelo Rio Madeira no pôr do sol',
       'Degustação de tambaqui na brasa, costela de pacu e doces de cupuaçu',
       'Feira de artesanato indígena dos povos Karipuna e Cassupá'
@@ -169,8 +173,9 @@ export const mockDestinations: RondoniaDestination[] = [
     latitude: -10.9234,
     longitude: -62.2458,
     photos: [
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&auto=format&fit=crop&q=80'
     ],
     highlights: [
       'Cachoeira das Três Quedas com poços naturais para banho revigorante',

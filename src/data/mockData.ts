@@ -16,7 +16,7 @@ export const mockAssociations: CommunityAssociation[] = [
       'Horta Comunitária Agroecológica e Mandioca Mansa',
       'Painéis de Energia Solar para a Escola Comunitária'
     ],
-    logoUrl: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=300&auto=format&fit=crop&q=80',
+    logoUrl: 'https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=400&auto=format&fit=crop&q=80',
     contactEmail: 'pedrasnegras.guapore@gmail.com'
   },
   {
@@ -34,7 +34,7 @@ export const mockAssociations: CommunityAssociation[] = [
       'Centro de Saberes e Artesanato Indígena Pama',
       'Monitoramento Territorial com Drones e GPS Offline'
     ],
-    logoUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300&auto=format&fit=crop&q=80',
+    logoUrl: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400&auto=format&fit=crop&q=80',
     contactEmail: 'contato@metareila.org.br'
   },
   {
@@ -52,7 +52,7 @@ export const mockAssociations: CommunityAssociation[] = [
       'Barco Ambulância Comunitário',
       'Estrutura de Ecoturismo de Baixo Impacto (Passarelas de Madeira)'
     ],
-    logoUrl: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=300&auto=format&fit=crop&q=80',
+    logoUrl: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=400&auto=format&fit=crop&q=80',
     contactEmail: 'resex.cautario@areca.org.br'
   },
   {
@@ -70,7 +70,7 @@ export const mockAssociations: CommunityAssociation[] = [
       'Equipamentos de Rádio VHF e Rastreadores Satelitais para Guias',
       'Capacitação em Etnoturismo e Educação Ambiental'
     ],
-    logoUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300&auto=format&fit=crop&q=80',
+    logoUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&auto=format&fit=crop&q=80',
     contactEmail: 'contato@agetur-ro.com.br'
   }
 ];
@@ -83,7 +83,7 @@ export const mockGuides: Guide[] = [
     specialty: 'Navegação Fluvial no Rio Guaporé & Etno-história das Fronteiras',
     rating: 4.97,
     totalExpeditions: 124,
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80',
     phone: '(69) 99312-4411'
   },
   {
@@ -93,7 +93,7 @@ export const mockGuides: Guide[] = [
     specialty: 'Etnobotânica Amazônica, Grafismos Tradicionais e Rituais Paiter',
     rating: 4.99,
     totalExpeditions: 98,
-    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80',
     phone: '(69) 98144-8890'
   },
   {
@@ -103,7 +103,7 @@ export const mockGuides: Guide[] = [
     specialty: 'Culinária Tradicional Guaporeana, Contação de Causos e Quelônios',
     rating: 5.0,
     totalExpeditions: 87,
-    avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&auto=format&fit=crop&q=80',
     phone: '(69) 99220-7714'
   },
   {
@@ -113,7 +113,7 @@ export const mockGuides: Guide[] = [
     specialty: 'Trekking em Floresta Primária, Primatologia e Fotografia de Natureza',
     rating: 4.92,
     totalExpeditions: 176,
-    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80',
     phone: '(69) 99388-1209'
   }
 ];
@@ -135,10 +135,10 @@ export const mockExperiences: Experience[] = [
     currentBookedCount: 8,
     description: 'Uma imersão inesquecível pelo caudaloso Rio Guaporé até os imponentes baluartes de pedra do Real Forte Príncipe da Beira (fundado em 1776). Durante a navegação em embarcação tradicional coberta, avistamos botos-cor-de-rosa, ariranhas e aves aquáticas. O roteiro inclui visitação guiada às muralhas de 10 metros, labirinto de galerias internas, almoço típico preparado pela comunidade ribeirinha e visita ao quilombo vizinho.',
     highlights: [
-      'Visita guiada ao Real Forte Príncipe da Beira (1776)',
+      'Visita guiada às muralhas e canhões do Real Forte Príncipe da Beira (1776)',
       'Navegação fluvial ecológica pelo Rio Guaporé com observação de botos e jacarés',
       'Almoço tradicional com peixe da bacia amazônica e farinha de mandioca d’água',
-      'Pernoite ou pôr-do-sol épico no espelho d’água do Guaporé'
+      'Pôr-do-sol épico no espelho d’água da fronteira Brasil-Bolívia'
     ],
     itinerary: [
       { time: '07:30', title: 'Embarque no Porto de Costa Marques', description: 'Briefing de segurança, verificação de coletes e introdução histórica pelo Guia Cadastur.', location: 'Porto Fluvial de Costa Marques' },
@@ -165,9 +165,9 @@ export const mockExperiences: Experience[] = [
       'Documento de identidade oficial (área de fronteira internacional)'
     ],
     images: [
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1584646098378-0874589d76b1?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&auto=format&fit=crop&q=80'
     ],
     requiresFUNAI: false,
     requiresICMBio: true,
@@ -202,7 +202,7 @@ export const mockExperiences: Experience[] = [
     highlights: [
       'Recepção formal e boas-vindas pelos anciãos da Aldeia Pama',
       'Trilha de etnobotânica guiada por xamãs e biólogos indígenas',
-      'Oficina prática de grafismos sagrados com tintas naturais',
+      'Oficina prática de grafismos sagrados com tintas naturais de jenipapo e urucum',
       'Apoio direto à Associação Metareilá e fortalecimento da cultura viva Paiter'
     ],
     itinerary: [
@@ -229,9 +229,9 @@ export const mockExperiences: Experience[] = [
       'Sem uso de perfumes ou cosméticos sintéticos fortes na aldeia'
     ],
     images: [
-      'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1200&auto=format&fit=crop&q=80'
     ],
     requiresFUNAI: true,
     funaiAuthNumber: 'FUNAI-RO-TI7SET/2026-042',
@@ -266,7 +266,7 @@ export const mockExperiences: Experience[] = [
     highlights: [
       'Demonstração prática da sangria e defumação tradicional do látex seringueiro',
       'Caminhada sob copas de castanheiras centenárias de mais de 40 metros de altura',
-      'Canoagem silenciosa com escuta de cantos de araras, tucanos e macacos-barrigudos',
+      'Canoagem silenciosa em igarapés de águas pretas com escuta de araras e macacos',
       'Almoço preparado em fogão a lenha ribeirinho com galinha caipira e mandioca amarela'
     ],
     itinerary: [
@@ -293,9 +293,9 @@ export const mockExperiences: Experience[] = [
       'Capa de chuva impermeável'
     ],
     images: [
-      'https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=1200&auto=format&fit=crop&q=80'
     ],
     requiresFUNAI: false,
     requiresICMBio: true,
@@ -328,10 +328,10 @@ export const mockExperiences: Experience[] = [
     currentBookedCount: 11,
     description: 'Pedras Negras é uma das mais emblemáticas comunidades quilombolas do Norte do Brasil, aninhada às margens pedregosas do Guaporé. Este roteiro alia a riquíssima cultura quilombola à preservação dos quelônios amazônicos (tartaruga-da-amazônia e tracajá). Os turistas participam do monitoramento de praias de desova, ouvem as modas de viola e tambores do Guaporé com Dona Benvinda e saboreiam os doces artesanais de banana e compotas locais.',
     highlights: [
-      'Participação no projeto comunitário de proteção dos ninhos de quelônios',
+      'Participação no projeto comunitário de proteção dos ninhos e soltura de tartarugas',
       'Avistamento de araras-azuis, cegonhas jaburus e gaviões-reais',
       'Apresentação cultural de roda de causos e cantigas quilombolas ancestrais',
-      'Passeio em barco de alumínio ao redor das famosas formações de pedras negras vulcânicas'
+      'Passeio em barco de alumínio ao redor das formações de pedras negras vulcânicas'
     ],
     itinerary: [
       { time: '07:00', title: 'Saída da comunidade ribeirinha de apoio', description: 'Navegação até o Quilombo de Pedras Negras.', location: 'Porto Fluvial do Guaporé' },
@@ -357,9 +357,9 @@ export const mockExperiences: Experience[] = [
       'Roupas de secagem rápida e chinelo/sandália de tiras firmes'
     ],
     images: [
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1200&auto=format&fit=crop&q=80'
     ],
     requiresFUNAI: false,
     requiresICMBio: true,
@@ -392,9 +392,9 @@ export const mockExperiences: Experience[] = [
     currentBookedCount: 7,
     description: 'Um refúgio de águas puras e mata exuberante no coração de Rondônia. O circuito percorre três quedas d’água preservadas por proprietários rurais agroecológicos e guias locais. Inclui caminhada em mata de transição, escalaminhada com corda de apoio, piscinas naturais verde-esmeralda e um mirante com visão de 360 graus do pôr do sol amazônico.',
     highlights: [
-      'Banho nas piscinas naturais da Cachoeira Escondida',
+      'Banho nas piscinas naturais verde-esmeralda da Cachoeira Escondida',
       'Subida ao Mirante da Serra com vista panorâmica da Amazônia central',
-      'Lanche campeiro com queijo artesanal de Rondônia e frutas regionais',
+      'Lanche campeiro com queijo artesanal de Rondônia e suco natural de cupuaçu',
       'Prática de Leave No Trace (Não Deixe Rastros) supervisionada'
     ],
     itinerary: [
@@ -420,9 +420,9 @@ export const mockExperiences: Experience[] = [
       'Roupa de banho e toalha compacta'
     ],
     images: [
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&auto=format&fit=crop&q=80'
     ],
     requiresFUNAI: false,
     requiresICMBio: false,
@@ -454,7 +454,7 @@ export const mockExperiences: Experience[] = [
     currentBookedCount: 12,
     description: 'A Estrada de Ferro Madeira-Mamoré (EFMM), a mítica "Ferrovia do Diabo", é um dos mais fascinantes capítulos da geopolítica mundial e da ocupação de Rondônia. Este circuito urbano e ecológico percorre o complexo histórico revitalizado, as oficinas com locomotivas a vapor inglesas e americanas, o memorial indígena das etnias locais afetadas pela ferrovia e um passeio em barco regional pelas águas barrentas e enérgicas do Rio Madeira, finalizando com o pôr do sol dourado.',
     highlights: [
-      'Passeio interpretativo pelos galpões e locomotivas históricas da EFMM',
+      'Passeio interpretativo pelas locomotivas a vapor centenárias da EFMM',
       'Navegação fluvial curta pelo Rio Madeira até os pés da Ponte Rondon-Roosevelt',
       'Degustação de tambaqui com baião de dois e mousses de frutas nativas (taperebá e bacuri)',
       'Visita ao Mercado Cultural de Porto Velho'
@@ -480,9 +480,9 @@ export const mockExperiences: Experience[] = [
       'Câmera ou smartphone carregado para fotografias do pôr do sol'
     ],
     images: [
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=900&auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80'
     ],
     requiresFUNAI: false,
     requiresICMBio: false,
