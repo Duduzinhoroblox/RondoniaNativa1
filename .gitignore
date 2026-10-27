@@ -10,6 +10,9 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+# Local environment files
+.env
+.env*.local
 *.local
 *.tsbuildinfo
 
