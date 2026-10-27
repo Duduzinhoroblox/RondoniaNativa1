@@ -76,7 +76,13 @@ export const OfflineGuideScanner: React.FC<OfflineGuideScannerProps> = ({
 
   const handleValidate = (hashToValidate: string) => {
     const cleanHash = hashToValidate.trim();
-    if (!cleanHash) return;
+    if (!cleanHash) {
+      setValidationResult({
+        success: false,
+        message: 'Por favor, digite o código de hash do voucher ou selecione um ingresso da lista de teste.'
+      });
+      return;
+    }
 
     const found = bookings.find(b => b.voucherHash.toLowerCase() === cleanHash.toLowerCase());
 

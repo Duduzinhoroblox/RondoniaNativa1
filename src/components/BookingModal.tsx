@@ -37,6 +37,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [touristName, setTouristName] = useState('Mariana Vasconcelos');
   const [touristEmail, setTouristEmail] = useState('mariana.vasconcelos@ecotur.com.br');
   const [touristPhone, setTouristPhone] = useState('(69) 99344-9988');
+  const [step1Error, setStep1Error] = useState<string | null>(null);
 
   // Step 2 Form State (Ethics Checklist)
   const [ethicsChecked, setEthicsChecked] = useState({
@@ -62,6 +63,33 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const platformAmount = (totalPrice * experience.splitPercentages.platform) / 100;
 
   const allEthicsAccepted = Object.values(ethicsChecked).every(Boolean);
+
+  const handleAdvanceToEthics = () => {
+    setStep1Error(null);
+    if (!touristName.trim() || touristName.trim().length < 3) {
+      setStep1Error('Por favor, informe o nome completo do turista responsável (mínimo de 3 caracteres).');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!touristEmail.trim() || !emailRegex.test(touristEmail.trim())) {
+      setStep1Error('Por favor, informe um endereço de e-mail válido para envio do voucher.');
+      return;
+    }
+
+    const digitsOnly = touristPhone.replace(/\D/g, '');
+    if (digitsOnly.length < 8) {
+      setStep1Error('Por favor, informe um telefone/WhatsApp de contato válido com DDD.');
+      return;
+    }
+
+    if (spotsCount < 1 || isOverCapacity) {
+      setStep1Error(`A quantidade de vagas deve estar entre 1 e o limite restante (${remainingSpots}).`);
+      return;
+    }
+
+    setStep(2);
+  };
 
   const pixCopyPastePayload = `00020126580014BR.GOV.BCB.PIX0136${experience.association.pixKey}520400005303986540${totalPrice.toFixed(2)}5802BR5925Rondonia Nativa TBC6010Porto Velho62070503***6304`;
 
@@ -282,6 +310,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   {experience.splitPercentages.communityAssociation}% direto para a comunidade anfitriã
                 </div>
               </div>
+
+              {/* Step 1 Error Banner */}
+              {step1Error && (
+                <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-800 flex items-start space-x-2 animate-fadeIn">
+                  <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+                  <span>{step1Error}</span>
+                </div>
+              )}
             </div>
           )}
 
@@ -526,7 +562,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
           {step === 1 && (
             <button
-              onClick={() => setStep(2)}
+              onClick={handleAdvanceToEthics}
               disabled={isOverCapacity}
               className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 shadow-md ${
                 isOverCapacity

@@ -11,7 +11,8 @@ import {
   Clock, 
   Check, 
   Sparkles,
-  Award
+  Award,
+  AlertCircle
 } from 'lucide-react';
 import { Experience, CommunityAssociation, Guide, User } from '../types';
 
@@ -40,6 +41,7 @@ export const CreateExperienceModal: React.FC<CreateExperienceModalProps> = ({
   const [difficulty, setDifficulty] = useState<'Leve' | 'Moderado' | 'Desafiador'>('Moderado');
   const [maxCapacityPerDay, setMaxCapacityPerDay] = useState(10);
   const [priceTotal, setPriceTotal] = useState(350);
+  const [formError, setFormError] = useState<string | null>(null);
 
   // Split percentages
   const [communitySplit, setCommunitySplit] = useState(60);
@@ -57,19 +59,54 @@ export const CreateExperienceModal: React.FC<CreateExperienceModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title || !subtitle) return;
+    setFormError(null);
+
+    if (!title.trim() || title.trim().length < 5) {
+      setFormError('O título do roteiro deve conter pelo menos 5 caracteres.');
+      return;
+    }
+
+    if (!subtitle.trim() || subtitle.trim().length < 10) {
+      setFormError('O subtítulo resumido deve conter pelo menos 10 caracteres.');
+      return;
+    }
+
+    if (!description.trim() || description.trim().length < 20) {
+      setFormError('A descrição detalhada deve conter pelo menos 20 caracteres.');
+      return;
+    }
+
+    if (priceTotal <= 0) {
+      setFormError('O preço total por turista deve ser maior que zero.');
+      return;
+    }
+
+    if (maxCapacityPerDay < 2) {
+      setFormError('A capacidade de carga diária deve ser de no mínimo 2 participantes.');
+      return;
+    }
+
+    if (communitySplit < 50) {
+      setFormError('Conforme a regra RN04 da plataforma, a associação comunitária deve receber no mínimo 50% do valor total.');
+      return;
+    }
+
+    if (communitySplit + guideSplit > 100) {
+      setFormError('A soma dos percentuais da comunidade e do guia não pode ultrapassar 100%.');
+      return;
+    }
 
     const assoc = associations.find(a => a.id === selectedAssocId) || associations[0];
     const guide = guides.find(g => g.id === selectedGuideId) || guides[0];
 
     const newExp: Experience = {
       id: `exp-${Date.now()}`,
-      title,
-      subtitle,
-      description,
+      title: title.trim(),
+      subtitle: subtitle.trim(),
+      description: description.trim(),
       category,
-      region,
-      locationName,
+      region: region.trim(),
+      locationName: locationName.trim(),
       latitude: -12.4282 + (Math.random() - 0.5) * 2,
       longitude: -63.7431 + (Math.random() - 0.5) * 2,
       priceTotal,
@@ -141,6 +178,13 @@ export const CreateExperienceModal: React.FC<CreateExperienceModalProps> = ({
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-4">
           
+          {formError && (
+            <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-800 flex items-start space-x-2 animate-fadeIn">
+              <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+              <span>{formError}</span>
+            </div>
+          )}
+
           <div>
             <label className="block text-xs font-bold text-slate-700 mb-1">Título do Roteiro</label>
             <input

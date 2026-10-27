@@ -175,12 +175,18 @@ npm run preview
 
 ### 7.5 Como Testar o Sistema (Roteiro de Demonstração)
 
-#### Usuários de Teste Pré-Configurados (Sem Necessidade de Digitar):
-Ao clicar no botão **"Entrar"** no cabeçalho do site, há 4 atalhos com 1 clique para entrar instantaneamente com os perfis cadastrados no banco:
-1. **Mariana Vasconcelos (Turista):** `mariana.vasconcelos@ecotur.com.br` (Senha fictícia: `senha123`)
-2. **Moacir Karipuna Guaporé (Guia Cadastur):** `moacir.guia@rondonianativa.org.br` (Registro: `RO-26.0084/2024-TUR`)
-3. **Dona Benvinda Quilombola (Liderança TBC):** `pedrasnegras.guapore@gmail.com` (Assoc. Pedras Negras)
-4. **Eduardo Renan (Admin & Centelha 3):** `innot.renan@gmail.com`
+#### Autenticação Realista e Validação Estrita de Credenciais:
+O sistema possui controle rigoroso de autenticação e validação de formulários:
+* **Bloqueio de Entradas Aleatórias:** Digitar caracteres aleatórios ou e-mails inexistentes resulta em mensagem de erro explícita (`E-mail não cadastrado no sistema...`) e impede o acesso.
+* **Validação de Senha:** Cada usuário possui senha validada (`senha123` para as contas padrão da spec).
+* **Persistência de Usuários:** Contas criadas na aba *"Cadastrar Novo Usuário"* são validadas (formato de e-mail, senha com no mínimo 6 dígitos, telefone com DDD, número Cadastur para guias e CNPJ/Pix para lideranças) e gravadas persistentemente para login posterior.
+
+#### Usuários de Teste Pré-Configurados (Para Teste com 1 Clique ou Digitação Manual):
+Ao clicar no botão **"Entrar"** no cabeçalho do site, há 4 atalhos com 1 clique para entrar instantaneamente com os perfis cadastrados no banco, ou você pode digitar as credenciais na aba manual:
+1. **Mariana Vasconcelos (Turista):** `mariana.vasconcelos@ecotur.com.br` | Senha: `senha123`
+2. **Moacir Karipuna Guaporé (Guia Cadastur):** `moacir.guia@rondonianativa.org.br` | Senha: `senha123` (Registro: `RO-26.0084/2024-TUR`)
+3. **Dona Benvinda Quilombola (Liderança TBC):** `pedrasnegras.guapore@gmail.com` | Senha: `senha123` (Assoc. Pedras Negras)
+4. **Eduardo Renan (Admin & Centelha 3):** `innot.renan@gmail.com` | Senha: `senha123`
 
 #### Roteiro do Fluxo Principal (Passo a Passo de Avaliação):
 1. **Descoberta:** Acesse a vitrine inicial, utilize os filtros de pesquisa e o botão **"Achar Lugares (Guia RO)"** para ver a logística da BR-364/BR-429 e a sazonalidade de secas/cheias.

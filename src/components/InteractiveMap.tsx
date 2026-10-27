@@ -34,6 +34,16 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
   const [tilesDownloaded, setTilesDownloaded] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState(0);
 
+  // Clean up Leaflet on unmount to avoid container reinitialization errors
+  useEffect(() => {
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+    };
+  }, []);
+
   // Initialize and update Leaflet Map
   useEffect(() => {
     if (!mapContainerRef.current) return;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Star, Heart, CheckCircle2, MessageSquare, Sparkles } from 'lucide-react';
+import { X, Star, Heart, CheckCircle2, MessageSquare, Sparkles, AlertCircle } from 'lucide-react';
 import { Experience, Review, User } from '../types';
 
 interface ReviewsModalProps {
@@ -19,7 +19,9 @@ export const ReviewsModal: React.FC<ReviewsModalProps> = ({
   const [hospitality, setHospitality] = useState(5);
   const [guideRating, setGuideRating] = useState(5);
   const [environmental, setEnvironmental] = useState(5);
+  const [authorName, setAuthorName] = useState(currentUser?.name || '');
   const [comment, setComment] = useState('');
+  const [formError, setFormError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
   // Default reviews if none exist
@@ -52,18 +54,30 @@ export const ReviewsModal: React.FC<ReviewsModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!comment.trim()) return;
+    setFormError(null);
+
+    const cleanName = (currentUser?.name || authorName).trim();
+    if (!cleanName || cleanName.length < 3) {
+      setFormError('Por favor, informe seu nome (mínimo de 3 caracteres).');
+      return;
+    }
+
+    const cleanComment = comment.trim();
+    if (!cleanComment || cleanComment.length < 10) {
+      setFormError('Seu comentário deve ter pelo menos 10 caracteres para enriquecer o relato.');
+      return;
+    }
 
     const newRev: Review = {
       id: `rev-${Date.now()}`,
       experienceId: experience.id,
-      touristName: currentUser?.name || 'Turista Anônimo',
+      touristName: cleanName,
       touristAvatar: currentUser?.avatarUrl || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80',
       rating,
       communityHospitalityRating: hospitality,
       guidePerformanceRating: guideRating,
       environmentalRespectRating: environmental,
-      comment,
+      comment: cleanComment,
       date: 'Hoje'
     };
 
@@ -115,6 +129,29 @@ export const ReviewsModal: React.FC<ReviewsModalProps> = ({
                 <span className="text-xs font-bold text-slate-900 block">
                   Deixe sua avaliação sobre "{experience.title}":
                 </span>
+
+                {formError && (
+                  <div className="p-2.5 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-800 flex items-start space-x-2 animate-fadeIn">
+                    <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+                    <span>{formError}</span>
+                  </div>
+                )}
+
+                {!currentUser && (
+                  <div>
+                    <label className="text-[11px] text-slate-600 font-semibold block mb-1">Seu Nome Completo</label>
+                    <input
+                      type="text"
+                      placeholder="Ex: Mariana Vasconcelos"
+                      value={authorName}
+                      onChange={(e) => {
+                        setAuthorName(e.target.value);
+                        if (formError) setFormError(null);
+                      }}
+                      className="w-full p-2 text-xs rounded-xl border border-slate-200 bg-white"
+                    />
+                  </div>
+                )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                   <div>

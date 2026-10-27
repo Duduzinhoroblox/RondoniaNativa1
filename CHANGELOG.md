@@ -5,6 +5,25 @@ Este documento registra a evolução cronológica do sistema, as decisões arqui
 
 ---
 
+### [v1.4.0] — 27 de Outubro de 2026 (Revisão Geral do Sistema e Blindagem contra Entradas Inválidas)
+
+#### 🔍 Revisão Humana Crítica e Correção de Falhas Reportadas:
+* **Correção no Mecanismo de Autenticação (`AuthModal.tsx`):**
+  * *Falha Identificada pelo Usuário:* A digitação de textos aleatórios (ex: `fygteyefgfegefgefg`) no campo de e-mail criava instantaneamente um usuário inexistente e efetuava o login sem validar as credenciais.
+  * *Correção Implementada:* 
+    * Implementada validação sintática estrita com regex RFC de e-mail.
+    * Bloqueio imediato de entradas aleatórias ou não cadastradas com exibição de alerta visual em vermelho: *"E-mail não cadastrado no sistema. Verifique o endereço digitado ou crie uma nova conta na aba 'Cadastrar Novo Usuário'"*.
+    * Verificação obrigatória de senha (exigência da senha padrão `senha123` para as contas pré-configuradas e senha cadastrada para novos usuários).
+    * Persistência dinâmica e reativa de novos usuários em `localStorage` (`rondonia_registered_users`), garantindo que usuários recém-cadastrados na aba de cadastro consigam fazer login normalmente com suas próprias senhas.
+* **Validação de Formulários em Todos os Módulos:**
+  * **Agendamento (`BookingModal.tsx`):** Travas de validação no Passo 1 para impedir avanço com nome incompleto (< 3 caracteres), e-mail inválido, telefone curto ou quantidade de vagas fora dos limites.
+  * **Novo Roteiro (`CreateExperienceModal.tsx`):** Travas para comprimento de título, subtítulo, descrição mínima (20 caracteres), preço positivo e cumprimento da regra RN04 (mínimo de 50% de repasse comunitário).
+  * **Avaliações Sustentáveis (`ReviewsModal.tsx`):** Exigência de nome do avaliador e justificativa/comentário substancial com no mínimo 10 caracteres.
+  * **Validador de Campo (`OfflineGuideScanner.tsx`):** Tratamento amigável para cliques sem código ou buscas por vouchers inexistentes, evitando silêncio ou erros não tratados.
+  * **Ciclo de Vida do Mapa Leaflet (`InteractiveMap.tsx`):** Adicionado tratamento de unmount para descartar o mapa da memória e evitar o erro clássico de re-inicialização ao alternar entre abas.
+
+---
+
 ### [v1.3.0] — 27 de Outubro de 2026 (Preparação para Entrega Final & Documentação)
 
 #### 🎯 Decisões Técnicas e Revisão Humana:
