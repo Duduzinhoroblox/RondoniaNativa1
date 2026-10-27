@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://duduzinhoroblox.github.io/RondoniaNativa1/sitemap.xml
