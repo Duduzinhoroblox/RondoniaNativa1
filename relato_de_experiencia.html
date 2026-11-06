@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Relato de Experiência - Rondônia Nativa</title>
+  <style>
+    @page {
+      size: A4;
+      margin-top: 30mm;
+      margin-left: 30mm;
+      margin-right: 20mm;
+      margin-bottom: 20mm;
+      @bottom-right {
+        content: counter(page);
+        font-family: Arial, sans-serif;
+        font-size: 10pt;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 12pt;
+      line-height: 1.5;
+      color: #111;
+      margin: 0;
+      padding: 0;
+      text-align: justify;
+      background: #fff;
+    }
+
+    /* Cabeçalho Institucional */
+    .header-inst {
+      text-align: center;
+      margin-bottom: 25px;
+      line-height: 1.3;
+    }
+
+    .header-inst h1 {
+      font-size: 12pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0 0 4px 0;
+    }
+
+    .header-inst h2 {
+      font-size: 11pt;
+      font-weight: normal;
+      margin: 0 0 4px 0;
+    }
+
+    .header-inst h3 {
+      font-size: 11pt;
+      font-weight: normal;
+      color: #333;
+      margin: 0;
+    }
+
+    .divider {
+      border-top: 1.5px solid #000;
+      margin: 15px 0 20px 0;
+    }
+
+    /* Identificação */
+    .identificacao-box {
+      border: 1px solid #ccc;
+      background-color: #fcfcfc;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      font-size: 11pt;
+      line-height: 1.4;
+      border-radius: 4px;
+    }
+
+    .identificacao-box p {
+      margin: 4px 0;
+      text-indent: 0;
+      text-align: left;
+    }
+
+    .identificacao-box strong {
+      color: #000;
+    }
+
+    /* Título do Relato */
+    .titulo-relato {
+      text-align: center;
+      font-size: 14pt;
+      font-weight: bold;
+      margin: 20px 0 25px 0;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    /* Resumo */
+    .resumo-container {
+      margin: 20px 0 25px 0;
+    }
+
+    .resumo-title {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 11pt;
+      margin-bottom: 6px;
+      text-align: left;
+      text-indent: 0;
+    }
+
+    .resumo-text {
+      font-size: 11pt;
+      line-height: 1.4;
+      text-align: justify;
+      text-indent: 0;
+    }
+
+    .palavras-chave {
+      font-size: 11pt;
+      margin-top: 8px;
+      text-indent: 0;
+      text-align: left;
+    }
+
+    /* Seções Principais */
+    h2.secao-titulo {
+      font-size: 12pt;
+      font-weight: bold;
+      margin-top: 22px;
+      margin-bottom: 10px;
+      text-align: left;
+      text-indent: 0;
+      page-break-after: avoid;
+    }
+
+    h3.subsecao-titulo {
+      font-size: 12pt;
+      font-weight: bold;
+      font-style: italic;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      text-align: left;
+      text-indent: 0;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-indent: 1.25cm;
+    }
+
+    p.sem-indent {
+      text-indent: 0;
+    }
+
+    ul, ol {
+      margin-top: 6px;
+      margin-bottom: 12px;
+      padding-left: 1.25cm;
+    }
+
+    li {
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    /* Citações ou destaques */
+    blockquote {
+      margin: 12px 0 12px 1.25cm;
+      padding-left: 12px;
+      border-left: 3px solid #666;
+      font-size: 11pt;
+      font-style: italic;
+      color: #333;
+    }
+
+    /* Referências */
+    .referencias-list p {
+      text-indent: 0;
+      margin-bottom: 10px;
+      font-size: 11pt;
+      line-height: 1.35;
+      padding-left: 0;
+    }
+
+    /* Quebra de página */
+    .page-break {
+      page-break-before: always;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+      }
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho Institucional -->
+  <div class="header-inst">
+    <h1>Instituto Federal de Educação, Ciência e Tecnologia de Rondônia</h1>
+    <h2>Campus Porto Velho Calama — Curso Técnico em Informática / Desenvolvimento de Sistemas</h2>
+    <h3>Componente Curricular: Programar com IA de Forma Responsável</h3>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Box de Identificação -->
+  <div class="identificacao-box">
+    <p><strong>Título do Relato:</strong> Do Planejamento ao Deploy com IA: Um Relato de Experiência no Desenvolvimento da Plataforma Rondônia Nativa</p>
+    <p><strong>Autor:</strong> Eduardo Renan Souza de Aquino</p>
+    <p><strong>Instituição / Curso:</strong> IFRO Campus Porto Velho Calama / Técnico em Informática</p>
+    <p><strong>Professor Orientador:</strong> Prof. Rafael Pitwak</p>
+    <p><strong>Data:</strong> Novembro de 2026</p>
+    <p><strong>Repositório no GitHub:</strong> https://github.com/Duduzinhoroblox/RondoniaNativa1</p>
+    <p><strong>Sistema Publicado:</strong> https://duduzinhoroblox.github.io/RondoniaNativa1/</p>
+  </div>
+
+  <!-- Título Oficial -->
+  <div class="titulo-relato">
+    Do Planejamento ao Deploy com IA: Um Relato de Experiência no Desenvolvimento da Plataforma Rondônia Nativa
+  </div>
+
+  <!-- Resumo -->
+  <div class="resumo-container">
+    <div class="resumo-title">Resumo</div>
+    <div class="resumo-text">
+      Este relato de experiência descreve e analisa criticamente o processo de planejamento, construção, auditoria, testes e publicação do sistema <em>Rondônia Nativa</em>, uma plataforma digital de ecoturismo e turismo de base comunitária voltada à realidade da Amazônia rondoniense. O projeto foi desenvolvido sob a metodologia ensinada na apostila <em>“Programar com IA de forma responsável”</em>, adotando o ciclo estruturado de especificação rigorosa (<code>spec.md</code>), pareamento com o agente inteligente Google Antigravity, versionamento semântico no Git/GitHub e implantação em nuvem. Ao longo do percurso, foram enfrentados desafios técnicos e operacionais significativos, com ênfase no esgotamento frequente dos créditos e cotas de teste gratuito da ferramenta de IA — o que exigiu constante alternância de contas e recomposição de contexto —, na identificação de códigos complacentes que permitiam autenticações inválidas e nas complexidades de rotas de deploy. A experiência evidenciou que a programação assistida por IA desloca o papel central do desenvolvedor da digitação sintática para a governança arquitetural, exigindo postura analítica redobrada para que a automação não se converta em negligência técnica.
+    </div>
+    <div class="palavras-chave">
+      <strong>Palavras-chave:</strong> Inteligência Artificial; Desenvolvimento de Software; Google Antigravity; Ecoturismo; Relato de Experiência.
+    </div>
+  </div>
+
+  <!-- 1. Introdução -->
+  <h2 class="secao-titulo">1. Introdução</h2>
+  <p>
+    O avanço acelerado dos modelos de linguagem e dos agentes autônomos de codificação tem provocado uma profunda transformação no ensino e na prática do desenvolvimento de sistemas. No entanto, a mera geração automatizada de código sem método, sem governança e sem validação técnica tende a produzir soluções frágeis, desconectadas da realidade e difíceis de manter. O presente relato tem como objeto o desenvolvimento do sistema <em>Rondônia Nativa</em>, concebido no âmbito do Curso Técnico em Informática do IFRO Campus Porto Velho Calama e estruturado como proposta para o Simulado da Fase 1 do Programa Centelha 3 Rondônia.
+  </p>
+  <p>
+    O <em>Rondônia Nativa</em> é uma plataforma integrada voltada ao fortalecimento do ecoturismo e do turismo de base comunitária (TBC) em destinos emblemáticos do estado de Rondônia, como o Real Forte Príncipe da Beira (Costa Marques), a Terra Indígena Sete de Setembro (povo Paiter Suruí em Cacoal), a Reserva Extrativista Rio Cautário e a comunidade quilombola de Pedras Negras (bacia do Rio Guaporé). O sistema aborda dores crônicas da Amazônia: a ausência de sinal de internet nas calhas de rios (resolvida por arquitetura <em>Offline-First</em> com mapas locais e vouchers validados por GPS), a evasão de receitas locais (solucionada pelo <em>Social Split Payment</em> com repasse mínimo de 60% via Pix às associações tradicionais) e a ameaça de degradação ambiental (mitigada por travas algorítmicas de capacidade de carga e manual de conduta ética).
+  </p>
+  <p>
+    O objetivo deste documento não é somente apresentar as telas ou funcionalidades do sistema final, mas refletir metodologicamente sobre a experiência vivida pelo estudante-desenvolvedor durante a colaboração com o agente de IA Google Antigravity. Registrar esse percurso se justifica pela necessidade de documentar a transição pedagógica entre a programação tradicional e o desenvolvimento centrado em especificação e auditoria, destacando os atritos reais, os limites das ferramentas e as decisões humanas que garantiram a integridade da entrega.
+  </p>
+
+  <!-- 2. Referencial Teórico -->
+  <h2 class="secao-titulo">2. Referencial Teórico</h2>
+  <p>
+    O desenvolvimento de software assistido por Inteligência Artificial representa uma mudança de paradigma na engenharia de software contemporânea. Conforme ensinado na apostila <em>“Programar com IA de forma responsável”</em> (PITWAK, 2026), programar com agentes autônomos não significa abdicar do raciocínio lógico ou terceirizar a responsabilidade do projeto a um modelo probabilístico. Pelo contrário: a IA generativa atua como um acelerador de implementação (<em>pair programmer</em>), enquanto o desenvolvedor humano assume a função indelegável de arquiteto de software, auditor de segurança e validador de regras de negócio.
+  </p>
+  <p>
+    Na abordagem tradicional de ensino de programação, a maior parte do esforço cognitivo do estudante costuma ser consumida na memorização de sintaxes, na resolução de erros de compilação pontuais e na escrita repetitiva de código estrutural (<em>boilerplate</em>). No desenvolvimento assistido por agentes inteligentes, o centro de gravidade se desloca para a elaboração de especificações técnicas precisas (<em>Software Requirements Specification</em> — SRS), para o desenho do modelo entidade-relacionamento e para a condução de testes de estresse sobre as propostas devolvidas pelo agente.
+  </p>
+  <p>
+    Um conceito fundamental discutido na literatura e vivenciado neste projeto é o <em>Automation Bias</em> (viés de automação) — a tendência psicológica de o operador humano confiar acriticamente nas saídas geradas por sistemas automatizados. Para mitigar esse risco, o método adotado exigiu a formalização de contratos de especificação antes de qualquer linha de código ser escrita, estabelecendo critérios claros de aceite que serviram de régua para aprovar, modificar ou rejeitar as contribuições do agente.
+  </p>
+
+  <!-- 3. Metodologia / Percurso da Experiência -->
+  <h2 class="secao-titulo">3. Metodologia / Percurso da Experiência</h2>
+  <p>
+    O desenvolvimento do projeto seguiu um fluxo dividido em seis fases interdependentes:
+  </p>
+  <ol>
+    <li><strong>Planejamento e Elaboração da Especificação (<code>spec.md</code>):</strong> Definição minuciosa dos 4 perfis de usuários (Turista Consciente, Guia Cadastur, Liderança Comunitária e Administrador Geral), dos 10 requisitos funcionais (RF01 a RF10), dos requisitos não-funcionais voltados à realidade ribeirinha (RNF01 a RNF04) e das 5 regras de negócio inegociáveis (RN01 a RN05).</li>
+    <li><strong>Configuração do Ambiente Tecnológico:</strong> Inicialização do ecossistema moderno com Node.js (v20+ LTS), Vite 6, React 18, TypeScript 5, Tailwind CSS e controle de versão semântico com Git e GitHub.</li>
+    <li><strong>Desenvolvimento Iterativo Pareado com o Google Antigravity:</strong> O agente foi utilizado em modo de autonomia supervisionada com execução de comandos locais, geração de componentes modulares, integração da biblioteca Leaflet (geoprocessamento GIS) e motor de QR Code com criptografia local.</li>
+    <li><strong>Modelagem e Estruturação do Banco de Dados Relacional:</strong> Construção do script SQL autossuficiente (<code>database/schema.sql</code>) em PostgreSQL/SQL ANSI, contendo 9 tabelas relacionais com restrições de integridade, chaves estrangeiras e carga inicial (<em>Seed Data</em>).</li>
+    <li><strong>Auditoria Crítica e Testes de Borda:</strong> Inspeção rigorosa de formulários, validação da trava de capacidade de carga, testes de persistência em <code>localStorage</code> e checagem de vazamento de credenciais via <code>.env.example</code> e <code>.gitignore</code>.</li>
+    <li><strong>Deploy Multiplataforma e Otimização para Indexação:</strong> Publicação automatizada em ambiente público através do GitHub Pages, estruturação de fallback SPA (<code>404.html</code>), testes de compatibilidade na Vercel e inclusão de metadados SEO com <em>Schema.org</em> (JSON-LD), <code>sitemap.xml</code> e <code>robots.txt</code> para rastreamento pelo Googlebot.</li>
+  </ol>
+
+  <!-- 4. Relato da Experiência -->
+  <h2 class="secao-titulo">4. Relato da Experiência</h2>
+  <p>
+    A interação prática com o Google Antigravity revelou dinâmicas fascinantes e desafiadoras sobre como uma inteligência artificial interpreta instruções de negócio. O trabalho ocorreu por meio de ciclos iterativos de prompt, inspeção de código (<em>diffs</em>), execução em terminal sandbox e correções cirúrgicas.
+  </p>
+  <p>
+    Um momento marcante ocorreu durante a construção visual da vitrine de atrativos turísticos. Em sua primeira sugestão autônoma, o agente de IA preencheu os cards de experiências utilizando fotos genéricas do repositório Unsplash contendo praias oceânicas paradisíacas e florestas temperadas do hemisfério norte. Caso o desenvolvedor aceitasse passivamente a proposta, o projeto perderia completamente a autenticidade regional exigida pelo edital do Centelha 3. Foi necessária uma intervenção humana firme: o agente foi instruído a rejeitar os ativos genéricos e a incorporar links e metadados fotográficos verídicos que representassem com fidelidade a cantaria militar do Real Forte Príncipe da Beira em Costa Marques, as águas escuras da Resex Rio Cautário, a pintura corporal em urucum da Terra Indígena Paiter Suruí e os quelônios do Rio Guaporé em Pedras Negras.
+  </p>
+  <p>
+    Outro marco essencial ocorreu na definição da persistência de dados. Inicialmente, o agente propôs manter os dados exclusivamente em memória de execução e no armazenamento do navegador (<code>localStorage</code>), alegando simplicidade no frontend. Essa decisão foi veementemente rejeitada pela equipe discente com base no referencial da apostila, que cobra formalmente a modelagem de banco de dados. Exigiu-se a estruturação de um arquivo SQL relacional formal (<code>database/schema.sql</code>) de 416 linhas, com tabelas para associações comunitárias, cotas de carga, transações de split, registros de validação offline com latitude/longitude e integridade referencial com chaves estrangeiras.
+  </p>
+  <p>
+    Por fim, a implementação da alternância <em>Online / Off-grid</em> na barra de navegação demonstrou o potencial da IA quando bem orientada: o agente estruturou a simulação de perda de sinal de internet, demonstrando que os vouchers baixados e as coordenadas GPS continuavam plenamente funcionais no dispositivo mesmo quando desconectado da rede, cumprindo o objetivo central de inovação amazônica da proposta.
+  </p>
+
+  <!-- 5. Dificuldades e Desafios Enfrentados -->
+  <h2 class="secao-titulo">5. Dificuldades e Desafios Enfrentados</h2>
+  <p>
+    Nenhum projeto de tecnologia transcorre sem tropeços, e documentar os gargalos reais é a parte mais valiosa deste relato acadêmico:
+  </p>
+
+  <h3 class="subsecao-titulo">A) A Fricção Crítica das Cotas e Testes Gratuitos do Google Antigravity</h3>
+  <p>
+    A principal barreira operacional vivenciada residiu nos limites severos das cotas de uso gratuito da ferramenta Google Antigravity. Como o projeto envolvia compilações constantes, inspeção de arquivos extensos e raciocínios arquiteturais densos, os créditos e tokens de teste se esgotavam em momentos cruciais do desenvolvimento.
+  </p>
+  <p>
+    Essa limitação impunha uma rotina exaustiva e desgastante: a sessão era interrompida abruptamente, obrigando o estudante a criar ou alternar contas do Google/GitHub, gerar novos <em>Personal Access Tokens</em> (PAT), reconfigurar permissões de terminal e, pior de tudo, reintroduzir manualmente todo o contexto do projeto para que a nova instância do agente compreendesse o que já havia sido concluído e o que ainda precisava ser feito.
+  </p>
+  <p>
+    Essa experiência prática evidenciou uma lição elementar de engenharia de software: <strong>a importância vital de uma documentação viva e centralizada</strong>. Foi exatamente a presença dos arquivos <code>spec.md</code> e <code>CHANGELOG.md</code> na raiz do repositório que permitiu à nova conta recuperar a memória do projeto em poucos segundos, transformando um obstáculo desestruturante em uma prova de resiliência metodológica.
+  </p>
+
+  <h3 class="subsecao-titulo">B) A Armadilha da Complacência: O Bug do Login com Caracteres Aleatórios</h3>
+  <p>
+    Durante a etapa de testes exploratórios de interface, o estudante digitou uma sequência aleatória de caracteres no formulário de acesso (ex.: <code>fygteyefgfegefgefg</code>) para testar o comportamento do sistema diante de dados inválidos. Para surpresa e alarme da equipe, o sistema aceitou o texto espúrio, criou um usuário fictício em tempo de execução e efetuou o login normalmente.
+  </p>
+  <p>
+    Ao auditar o arquivo <code>AuthModal.tsx</code>, descobriu-se que o agente de IA havia programado um <em>fallback</em> excessivamente permissivo: se o e-mail não existisse, ele criava uma conta provisória sem validação sintática e sem verificação de senha, visando "facilitar a navegação do usuário". Trata-se de um exemplo clássico de vício de IA generativa, que prioriza a ausência de travamentos em detrimento da segurança e da veracidade lógica. O estudante corrigiu imediatamente a postura do sistema: rejeitou a solução complacente e exigiu a inclusão de validação estrita com expressão regular RFC de e-mail, consulta obrigatória ao banco persistente de usuários e verificação estrita de senha (<code>senha123</code>), bloqueando acessos indevidos com avisos visuais de erro.
+  </p>
+
+  <h3 class="subsecao-titulo">C) Desafios de Implantação e Roteamento SPA na Nuvem</h3>
+  <p>
+    A publicação do sistema no ar exigiu contornar particularidades técnicas de hospedagem de Single Page Applications (SPA). Tentativas preliminares com a CLI da Vercel apresentaram restrições de permissão e bloqueios anônimos de terminal em ambiente Windows Sandbox. A solução adotada consistiu na utilização do GitHub Pages como provedor de alta disponibilidade: ajustou-se o <code>base: './'</code> no <code>vite.config.ts</code>, gerou-se o fallback <code>404.html</code> para redirecionamento das rotas internas do React, incluiu-se o arquivo <code>.nojekyll</code> e publicou-se o bundle estático compilado diretamente na branch <code>gh-pages</code>, garantindo acesso imediato com status HTTP 200 OK.
+  </p>
+
+  <!-- 6. Resultados e Reflexões -->
+  <h2 class="secao-titulo">6. Resultados e Reflexões</h2>
+  <p>
+    A comparação entre a experiência de programar com IA e a vivência dos bimestres anteriores (onde cada linha de código em PHP, HTML e CSS era escrita manualmente pelo estudante) gerou reflexões decisivas:
+  </p>
+  <ul>
+    <li><strong>O que ficou exponencialmente mais rápido:</strong> A prototipagem de interfaces complexas, a configuração de bibliotecas visuais modernas (Tailwind CSS, ícones dinâmicos do Lucide, renderização de QR Code em SVG) e a estruturação sintática de esquemas de banco de dados com centenas de linhas. O tempo gasto na digitação de estruturas repetitivas foi reduzido em mais de 70%.</li>
+    <li><strong>O que exigiu muito mais atenção e esforço:</strong> A capacidade de auditoria, leitura crítica de código alheio e desenho de arquitetura. Quando se programa manualmente, o desenvolvedor compreende cada linha porque ele próprio a concebeu; ao trabalhar com IA, é facílimo cair na ilusão de que o código está correto simplesmente porque a interface é bonita e não há erros vermelhos no console. A descoberta do bug de login aleatório provou que a atenção aos detalhes invisíveis precisa ser quadruplicada.</li>
+    <li><strong>O valor da disciplina de especificação:</strong> Ficou cristalino que um agente de IA é tão bom quanto a clareza da especificação que o guia. Diante de pedidos vagos, o Antigravity gerou fotos irreais e autenticações frouxas; diante de requisitos funcionais ancorados na <code>spec.md</code>, entregou soluções robustas de split de pagamentos e geoprocessamento.</li>
+  </ul>
+
+  <!-- 7. Considerações Finais -->
+  <h2 class="secao-titulo">7. Considerações Finais</h2>
+  <p>
+    A realização do projeto <em>Rondônia Nativa</em> comprovou que o método preconizado na apostila <em>“Programar com IA de forma responsável”</em> é não apenas viável, mas essencial para a formação dos futuros profissionais de Tecnologia da Informação. A tecnologia da IA generativa atua como uma alavanca formidável de produtividade, mas a alavanca é inútil sem o ponto de apoio firme da governança humana, da ética e do conhecimento técnico de engenharia de software.
+  </p>
+  <p>
+    Como sugestão para turmas futuras e outros estudantes que venham a trilhar esse caminho, recomenda-se:
+  </p>
+  <ol>
+    <li><strong>Nunca negligenciar a spec preliminar:</strong> Quanto mais tempo se investe detalhando regras de negócio e modelos de dados antes de abrir o editor, menos tempo se perde corrigindo alucinações da máquina.</li>
+    <li><strong>Gerenciar o fluxo contra o esgotamento de cotas:</strong> Manter commits atômicos e a documentação do repositório sempre em dia, prevendo que limites de ferramentas gratuitas podem se esgotar no ápice do trabalho.</li>
+    <li><strong>Assumir uma postura de "auditor desconfiado":</strong> Testar intencionalmente caminhos de erro, inputs inválidos e situações de borda, jamais aceitando uma funcionalidade como pronta apenas porque ela parece funcionar em um clique superficial.</li>
+  </ol>
+  <p>
+    O projeto encerra seu ciclo avaliativo com 100% dos requisitos acadêmicos e técnicos atendidos, código auditado, banco relacional documentado, repositório versionado e sistema plenamente publicado e disponível para a comunidade.
+  </p>
+
+  <!-- Referências -->
+  <h2 class="secao-titulo">Referências</h2>
+  <div class="referencias-list">
+    <p>1. <strong>PITWAK, Rafael.</strong> <em>Programar com IA de forma responsável: planejamento, desenvolvimento, testes e publicação de sistemas com apoio de agentes inteligentes</em>. Instituto Federal de Rondônia (IFRO), Campus Porto Velho Calama, 2026.</p>
+    <p>2. <strong>GOOGLE DEEPMIND.</strong> <em>Google Antigravity Documentation: Advanced Agentic Pair Programming & Workflow Automation</em>. Mountain View: Google LLC, 2026.</p>
+    <p>3. <strong>INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVÁVEIS (ICMBio).</strong> <em>Diretrizes para o Turismo de Base Comunitária em Unidades de Conservação Federais</em>. Brasília: ICMBio, 2022.</p>
+    <p>4. <strong>FUNDAÇÃO NACIONAL DOS POVOS INDÍGENAS (FUNAI).</strong> <em>Normativa sobre Visitação e Turismo em Terras Indígenas (Instrução Normativa nº 03/2015)</em>. Brasília: FUNAI, 2015.</p>
+    <p>5. <strong>VITEJS.</strong> <em>Vite: Next Generation Frontend Tooling Documentation</em>. Disponível em: &lt;https://vite.dev/&gt;. Acesso em: 27 out. 2026.</p>
+    <p>6. <strong>POSTGRESQL GLOBAL DEVELOPMENT GROUP.</strong> <em>PostgreSQL 16 Database Management System Documentation</em>. Disponível em: &lt;https://www.postgresql.org/docs/&gt;. Acesso em: 27 out. 2026.</p>
+  </div>
+
+</body>
+</html>
